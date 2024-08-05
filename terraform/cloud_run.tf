@@ -1,5 +1,5 @@
 resource "google_cloud_run_v2_service" "default" {
-  name     = "virtual-natsumatsuri"
+  name     = "${var.project_id}"
   location = var.region
 
   template {
