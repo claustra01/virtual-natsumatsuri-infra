@@ -62,7 +62,7 @@ jobs:
           GCP_IMAGE_NAME: ${{ secrets.GCP_IMAGE_NAME }}
 
   apply:
-    # if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: plan
     runs-on: ubuntu-latest
 
