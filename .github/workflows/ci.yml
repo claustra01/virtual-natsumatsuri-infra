@@ -1,5 +1,4 @@
-name: Format and Plan
-
+name: ci
 on:
   push:
 
