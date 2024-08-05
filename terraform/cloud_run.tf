@@ -1,5 +1,5 @@
 resource "google_cloud_run_v2_service" "default" {
-  name     = "${var.project_id}"
+  name     = "${var.service_name}"
   location = "${var.region}"
 
   template {
