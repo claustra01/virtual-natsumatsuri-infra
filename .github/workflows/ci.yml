@@ -93,10 +93,10 @@ jobs:
 
       - name: Apply
         run: |
-          export TF_VAR_project_id=$GCP_PROJECT_ID
-          export TF_VAR_region=$GCP_REGION
-          export TF_VAR_service_name=$GCP_SERVICE_NAME
-          export TF_VAR_image_name=$GCP_IMAGE_NAME
+          export TF_VAR_project_id=${{ secrets.GCP_PROJECT_ID }}
+          export TF_VAR_region=${{ secrets.GCP_REGION }}
+          export TF_VAR_service_name=${{ secrets.GCP_SERVICE_NAME }}
+          export TF_VAR_image_name=${{ secrets.GCP_IMAGE_NAME }}
           cd terraform
           terraform apply --auto-approve
         env:
