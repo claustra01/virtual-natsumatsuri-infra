@@ -1,15 +1,15 @@
 variable "project_id" {
-  type = string
+  type    = string
 }
 
 variable "region" {
-  type = string
+  type    = string
 }
 
 variable "service_name" {
-  type = string
+  type    = string
 }
 
 variable "image_name" {
-  type = string
+  type    = string
 }
