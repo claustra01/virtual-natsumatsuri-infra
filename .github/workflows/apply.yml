@@ -36,7 +36,7 @@ jobs:
           cd terraform
           terraform init
 
-      - name: Plan
+      - name: Apply
         run: |
           export TF_VAR_project_id=$GCP_PROJECT_ID
           export TF_VAR_region=$GCP_REGION
