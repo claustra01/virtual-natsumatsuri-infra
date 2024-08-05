@@ -15,7 +15,7 @@ resource "google_cloud_run_v2_service" "default" {
 resource "google_cloud_run_v2_service_iam_member" "member" {
   name     = google_cloud_run_v2_service.default.name
   location = google_cloud_run_v2_service.default.location
-  role     = "roles/run.invoker"
+  role     = "roles/run.admin"
   member   = "serviceAccount:terraform@${var.project_id}.iam.gserviceaccount.com"
 }
 
