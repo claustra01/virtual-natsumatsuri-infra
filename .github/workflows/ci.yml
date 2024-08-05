@@ -2,28 +2,6 @@ name: ci
 on:
   push:
 
-.terraform_setup: &terraform_setup
-  - id: auth
-    uses: google-github-actions/auth@v2
-    with:
-      credentials_json: "${{ secrets.GCLOUD_AUTH }}"
-
-  - name: Setup Google Cloud
-    uses: google-github-actions/setup-gcloud@v2
-    with:
-      service_account_key: ${{ secrets.GCLOUD_AUTH }}
-      project_id: ${{ secrets.PROJECT_ID }}
-
-  - name: Install Terraform
-    uses: hashicorp/setup-terraform@v3
-    with:
-      terraform_version: 1.9.3
-
-  - name: Init
-    run: |
-      cd terraform
-      terraform init
-
 jobs:
   format:
     runs-on: ubuntu-latest
@@ -48,7 +26,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - <<: *terraform_setup
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: "${{ secrets.GCLOUD_AUTH }}"
+
+      - name: Setup Google Cloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          service_account_key: ${{ secrets.GCLOUD_AUTH }}
+          project_id: ${{ secrets.PROJECT_ID }}
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.3
+
+      - name: Init
+        run: |
+          cd terraform
+          terraform init
 
       - name: Plan
         run: |
@@ -73,7 +70,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - <<: *terraform_setup
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: "${{ secrets.GCLOUD_AUTH }}"
+
+      - name: Setup Google Cloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          service_account_key: ${{ secrets.GCLOUD_AUTH }}
+          project_id: ${{ secrets.PROJECT_ID }}
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.3
+
+      - name: Init
+        run: |
+          cd terraform
+          terraform init
 
       - name: Apply
         run: |
