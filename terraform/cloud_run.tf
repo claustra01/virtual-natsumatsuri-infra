@@ -20,6 +20,7 @@ resource "google_cloud_run_survice_iam_member" "member" {
 }
 
 resource "google_cloud_run_service_iam_binding" "noauth" {
+  id       = "cloud-run-noauth"
   service  = google_cloud_run_v2_service.default.name
   location = google_cloud_run_v2_service.default.location
   role     = "roles/run.invoker"
