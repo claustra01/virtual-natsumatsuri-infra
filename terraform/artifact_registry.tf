@@ -11,3 +11,10 @@ resource "google_artifact_registry_repository" "default" {
     }
   }
 }
+
+resource "google_artifact_registry_repository_iam_member" "member" {
+  repository = google_artifact_registry_repository.default.name
+  location   = google_artifact_registry_repository.default.location
+  role       = "roles/artifactregistry.writer"
+  member     = "serviceAccount:terraform@${var.project_id}.iam.gserviceaccount.com"
+}
