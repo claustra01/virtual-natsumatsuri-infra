@@ -1,4 +1,15 @@
-variable "project_id" {}
-variable "region" {}
-variable "service_name" {}
-variable "image_name" {}
+variable "project_id" {
+  type = string
+}
+
+variable "region" {
+  type = string
+}
+
+variable "service_name" {
+  type = string
+}
+
+variable "image_name" {
+  type = string
+}
