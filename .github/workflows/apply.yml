@@ -1,0 +1,26 @@
+name: Format and Plan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  apply:
+    needs: plan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.3
+
+      - name: Init
+        run: cd terraform && terraform init
+
+      - name: Apply
+        run: cd terraform && terraform apply
