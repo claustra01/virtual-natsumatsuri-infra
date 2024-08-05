@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "terraform-state-bucket"
+    bucket = "virtual-natsumatsuri-terraform-state-backet"
     prefix = "terraform"
   }
 }

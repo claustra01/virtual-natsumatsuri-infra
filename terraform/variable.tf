@@ -13,7 +13,3 @@ variable "service_name" {
 variable "image_name" {
   type    = string
 }
-
-variable "bucket_name" {
-  type    = string
-}
