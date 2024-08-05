@@ -12,9 +12,16 @@ resource "google_cloud_run_v2_service" "default" {
   }
 }
 
-resource "google_cloud_run_service_iam_binding" "noauth" {
-  service  = var.service_name
-  location = var.region
+resource "google_cloud_run_v2_service_iam_member" "member" {
+  name     = google_cloud_run_v2_service.default.name
+  location = google_cloud_run_v2_service.default.location
+  role     = "roles/run.invoker"
+  member   = "serviceAccount:terraform@${var.project_id}.iam.gserviceaccount.com"
+}
+
+resource "google_cloud_run_v2_service_iam_binding" "noauth" {
+  name     = google_cloud_run_v2_service.default.name
+  location = google_cloud_run_v2_service.default.location
   role     = "roles/run.invoker"
   members  = ["allUsers"]
 }
