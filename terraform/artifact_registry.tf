@@ -4,6 +4,14 @@ resource "google_artifact_registry_repository" "default" {
   format        = "DOCKER"
 
   cleanup_policies {
+    id     = "delete-registry"
+    action = "DELETE"
+    condition {
+      older_than = "1s"
+    }
+  }
+
+  cleanup_policies {
     id     = "keep-minimum-versions"
     action = "KEEP"
     most_recent_versions {
