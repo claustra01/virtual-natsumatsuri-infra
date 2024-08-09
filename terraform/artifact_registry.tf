@@ -4,7 +4,7 @@ resource "google_artifact_registry_repository" "default" {
   format        = "DOCKER"
 
   cleanup_policies {
-    id     = "delete-registry"
+    id     = "delete-images"
     action = "DELETE"
     condition {
       older_than = "1s"
@@ -12,7 +12,7 @@ resource "google_artifact_registry_repository" "default" {
   }
 
   cleanup_policies {
-    id     = "keep-minimum-versions"
+    id     = "keep-latest-image"
     action = "KEEP"
     most_recent_versions {
       keep_count = 1
