@@ -57,8 +57,8 @@ jobs:
           terraform plan
 
   apply:
-    if: ${{ github.ref == 'refs/heads/main' }}
-    needs: plan
+    # if: ${{ github.ref == 'refs/heads/main' }}
+    # needs: plan
     runs-on: ubuntu-latest
 
     steps:
@@ -93,4 +93,4 @@ jobs:
           export TF_VAR_service_name=${{ secrets.GCP_SERVICE_NAME }}
           export TF_VAR_image_name=${{ secrets.GCP_IMAGE_NAME }}
           cd terraform
-          terraform apply --auto-approve
+          terraform apply --auto-approve -replace="google_cloud_run_v2_service.default"
